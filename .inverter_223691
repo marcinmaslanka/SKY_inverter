@@ -1,9 +1,0 @@
-** sch_path: /foss/designs/SKY/inverter/inverter.sch
-.subckt inverter VP A Y VN 
-*.PININFO VP:B VN:B A:I Y:O 
-M1 ?1 Y ?1 A ?1 VN ?1 VN  sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 m=1
-**** end_element
-M2 ?1 Y ?1 A ?1 VP ?1 VP  sky130_fd_pr__pfet_01v8 L=0.15 W=4 nf=1 m=1
-**** end_element
-.ends
-.end
