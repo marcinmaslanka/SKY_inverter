@@ -58,9 +58,9 @@ Open Xschem:
 xschem
 ```
 2. Modify the Inverter Symbol
-# Open inverter.sym
-# Press q to view properties
-# Change the model type from subcircuit to primitive
+- Open inverter.sym
+- Press q to view properties
+- Change the model type from subcircuit to primitive
 
 3. Edit the Testbench
 In the testbench schematic, add the following line to the simulation parameters:
@@ -71,8 +71,8 @@ In the testbench schematic, add the following line to the simulation parameters:
 This tells Ngspice to use the netlist generated during PEX.
 
 4. Run Simulation
-# Click Netlist
-# Click Run
+- Click Netlist
+- Click Run
 
 You should now see the post-layout simulation waveform.
 
