@@ -30,11 +30,53 @@ xschem
 ```
 
 ### 🧱 Layout
-The layout (inverter.mag) can be opened in Magic VLSI:
+The layout (inverter.mag) can be opened in Magic VLSI or KLayout
 
+### Design Rule Check (DRC)
+Use the IIC-OSIC-Multitool:
 ```bash
-# magic inverter.mag
-# Run DRC, LVS, and optionally extract parasitics for simulation.
+iic-drc.sh -b inverter.mag -d
 ```
 
+### Layout Versus Schematic (LVS)
+Run the LVS check using:
+```bash
+iic-lvs.sh -d -s inverter.sch -l inverter.mag -c inverter 
+```
+### Parasitic Extraction (PEX)
+Run the following Command:
+```bash
+iic-pex.sh -m 3 inverter.mag -d
+```
+If you're unsure about the parameters, run the command without arguments (e.g., iic-drc.sh) to display the help message.
+
+### Post-Layout Simulation
+Make sure that the pin order matches between pre- and post-layout simulations.
+
+Open Xschem:
+```bash
+xschem
+```
+2. Modify the Inverter Symbol
+# Open inverter.sym
+# Press q to view properties
+# Change the model type from subcircuit to primitive
+
+3. Edit the Testbench
+In the testbench schematic, add the following line to the simulation parameters:
+
+```bash
+.include /foss/designs/SKY/inverter/inverter.pex.spice
+```
+This tells Ngspice to use the netlist generated during PEX.
+
+4. Run Simulation
+# Click Netlist
+# Click Run
+
+You should now see the post-layout simulation waveform.
+
+---
+
+Feel free to use, modify, and share.
 
